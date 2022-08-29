@@ -39,9 +39,11 @@ export const HeaderBar = () => {
                                 View
                             </Button>
                         </LinkRouter>
-                        <Button variant="outline-info" onClick={logout}>
-                            Disconnect
-                        </Button>
+                        <LinkRouter to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+                            <Button variant="outline-info" onClick={logout}>
+                                Disconnect
+                            </Button>
+                        </LinkRouter>
                     </ButtonGroup>
                 }
                 {!walletAddress &&
