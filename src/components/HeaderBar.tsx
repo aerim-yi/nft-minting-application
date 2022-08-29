@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from '@imtbl/imx-sdk';
+import { Link as LinkRouter } from 'react-router-dom'
 import { Navbar, Container, Button, ButtonGroup } from 'react-bootstrap';
 
 export const HeaderBar = () => {
@@ -23,15 +24,21 @@ export const HeaderBar = () => {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand><strong>NFT Minter</strong></Navbar.Brand>
+                <LinkRouter to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+                    <Navbar.Brand><strong>NFT Minter</strong></Navbar.Brand>
+                </LinkRouter>
                 {walletAddress &&
                     <ButtonGroup>
-                        <Button variant="outline-info" className="me-1">
-                            Create
-                        </Button>
-                        <Button variant="outline-info" className="me-1">
-                            View
-                        </Button>
+                        <LinkRouter to={'/create'} style={{ textDecoration: 'none', color: 'black' }}>
+                            <Button variant="outline-info" className="me-1">
+                                Create
+                            </Button>
+                        </LinkRouter>
+                        <LinkRouter to={'/view'} style={{ textDecoration: 'none', color: 'black' }}>
+                            <Button variant="outline-info" className="me-1">
+                                View
+                            </Button>
+                        </LinkRouter>
                         <Button variant="outline-info" onClick={logout}>
                             Disconnect
                         </Button>
