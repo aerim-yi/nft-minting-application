@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from '@imtbl/imx-sdk';
-import { Navbar, Container, Button } from 'react-bootstrap';
+import { Navbar, Container, Button, ButtonGroup } from 'react-bootstrap';
 
 export const HeaderBar = () => {
     const [walletAddress, setWalletAddress] = useState(localStorage.WALLET_ADDRESS)
@@ -15,13 +15,33 @@ export const HeaderBar = () => {
         setWalletAddress(localStorage.WALLET_ADDRESS);
     }
 
+    function logout() {
+        localStorage.removeItem('WALLET_ADDRESS');
+        setWalletAddress(localStorage.WALLET_ADDRESS);
+    }
+
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand><strong>NFT Minter</strong></Navbar.Brand>
-                <Button variant="outline-info" onClick={login}>
-                    Connect Wallet
-                </Button>
+                {walletAddress &&
+                    <ButtonGroup>
+                        <Button variant="outline-info" className="me-1">
+                            Create
+                        </Button>
+                        <Button variant="outline-info" className="me-1">
+                            View
+                        </Button>
+                        <Button variant="outline-info" onClick={logout}>
+                            Disconnect
+                        </Button>
+                    </ButtonGroup>
+                }
+                {!walletAddress &&
+                    <Button variant="outline-info" onClick={login}>
+                        Connect Wallet
+                    </Button>
+                }
             </Container>
         </Navbar>
     )
