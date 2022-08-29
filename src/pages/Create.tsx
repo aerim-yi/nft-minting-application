@@ -1,10 +1,20 @@
-import { Container, Row, Col, Accordion } from 'react-bootstrap';
+import { Container, Row, Col, Accordion, Alert } from 'react-bootstrap';
 
 export const Create = () => {
     return (
         <Container>
             <Row>
                 <Col>
+                    <Alert variant="success" className="mt-3">
+                        <Alert.Heading>Information Board</Alert.Heading>
+                        <p>
+                            No data available yet
+                        </p>
+                        <hr />
+                        <p className="mb-0">
+                            No data available yet
+                        </p>
+                    </Alert>
                     <Accordion defaultActiveKey="0" className="mt-3">
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>1. Deploy Smart Contract</Accordion.Header>
