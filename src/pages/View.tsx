@@ -9,6 +9,5 @@ export const View = () => {
                 </Col>
             </Row>
         </Container>
-
     )
 }

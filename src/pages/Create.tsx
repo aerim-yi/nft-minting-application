@@ -5,7 +5,7 @@ export const Create = () => {
         <Container>
             <Row>
                 <Col>
-                    <Alert variant="success" className="mt-3">
+                    <Alert variant="info" className="mt-3">
                         <Alert.Heading>Information Board</Alert.Heading>
                         <p>
                             No data available yet
