@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { createProject } from '../../api/projects-api';
 import { ethers } from 'ethers';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Toast } from 'react-bootstrap';
 
 export const NewProjectForm = () => {
   const [projectName, setProjectName] = useState();
   const [companyName, setCompanyName] = useState();
   const [contactEmail, setContactEmail] = useState();
   const [projectId, setProjectId] = useState();
+  const [show, setShow] = useState(false);
 
   const createNewProject = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -15,13 +16,17 @@ export const NewProjectForm = () => {
     const signer = provider.getSigner();
 
     const project = await createProject(signer, companyName, contactEmail, projectName)
-    if (project.id) {
+    if (project?.id) {
       setProjectId(project.id)
+      setShow(true)
     }
   }
 
   return (
     <Form>
+      <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+        <Toast.Body>{`Your project with id ${projectId} has been created!`}</Toast.Body>
+      </Toast>
       <Form.Group className="mb-3">
         <Form.Label>Project Name</Form.Label>
         <Form.Control placeholder="Enter project name" onChange={e => setProjectName(e.target.value)} />
