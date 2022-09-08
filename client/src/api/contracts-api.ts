@@ -14,9 +14,7 @@ export const deploySmartContract = async (owner: string, contractName: string, c
         await provider.send('eth_requestAccounts', []);
         const signer = provider.getSigner();
 
-        console.log("Deploying Contract with the account:", signer._address);
-        console.log("abi", abi)
-        console.log("bytecode", bytecode)
+        console.log("Deploying Contract...")
 
         // Get chain id from metamask so we can work out what network we are on.
         const chainId = window.ethereum.networkVersion;
@@ -29,9 +27,9 @@ export const deploySmartContract = async (owner: string, contractName: string, c
 
         // Deploy an instance of the contract
         const asset = await Asset.deploy(owner, contractName, contractSymbol, imxAddress);
+
         await asset.deployed();
         console.log("Deployed Contract Address:", asset.address);
-        console.log('Verifying contract in 5 minutes...');
 
         return asset
 
