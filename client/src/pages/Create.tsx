@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col, Accordion, Alert } from 'react-bootstrap';
 import { DeploySmartContractForm } from '../components/forms/DeploySmartContractForm';
-import { NewCollectionForm } from '../components/forms/NewCollectionForm';
 import { NewProjectForm } from '../components/forms/NewProjectForm';
 
 export const Create = () => {
@@ -49,7 +48,6 @@ export const Create = () => {
                         <Accordion.Item eventKey="3">
                             <Accordion.Header>4. Create New Collection</Accordion.Header>
                             <Accordion.Body>
-                                <NewCollectionForm />
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="4">

@@ -35,13 +35,14 @@ export const View = () => {
                     <Row>
                         <Col>
                             <h3>My Projects</h3>
-                            <ProjectTable projects={projects} />
+                            {projects && <ProjectTable projects={projects} />}
+                            {console.log('projects', projects)}
                         </Col>
                     </Row>
                     <Row>
                         <Col>
                             <h3>My Assets</h3>
-                            <AssetTable assets={userAssets} />
+                            {userAssets && <AssetTable assets={userAssets} />}
                         </Col>
                     </Row>
                 </>
