@@ -25,7 +25,7 @@ export const NewCollectionForm = ({ setInfo }) => {
                 <Form.Control type="text" placeholder="Enter your contract address" onChange={e => setContractAddress(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3">
-                <Form.Label>Collection Name</Form.Label>
+                <Form.Label>Colle ction Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter collection name" onChange={e => setCollectionName(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3">
