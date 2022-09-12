@@ -3,7 +3,7 @@ import { createProject } from '../../api/projects-api';
 import { ethers } from 'ethers';
 import { Button, Form, Toast } from 'react-bootstrap';
 
-export const NewProjectForm = () => {
+export const NewProjectForm = ({ setInfo }) => {
   const [projectName, setProjectName] = useState();
   const [companyName, setCompanyName] = useState();
   const [contactEmail, setContactEmail] = useState();
@@ -19,14 +19,16 @@ export const NewProjectForm = () => {
     if (project?.id) {
       setProjectId(project.id)
       setShow(true)
+      setInfo({ key: "New project ID", value: project.id })
     }
   }
 
   return (
     <Form>
-      <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+      <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide bg={'info'}>
         <Toast.Body>{`Your project with id ${projectId} has been created!`}</Toast.Body>
       </Toast>
+      <br />
       <Form.Group className="mb-3">
         <Form.Label>Project Name</Form.Label>
         <Form.Control placeholder="Enter project name" onChange={e => setProjectName(e.target.value)} />
