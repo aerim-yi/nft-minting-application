@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Table } from 'react-bootstrap';
 import placeholderImg from '../../asset/placeholderImg.png'
 
@@ -14,7 +15,7 @@ export const AssetTable = ({ assets }) => {
             </thead>
             <tbody>
                 {assets.map((asset) => (
-                    <tr>
+                    <tr key={asset.token_id}>
                         <td>{asset.token_id}</td>
                         <td>{asset.name}</td>
                         <td>{asset.collection.name}</td>

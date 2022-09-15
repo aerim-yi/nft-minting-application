@@ -1,7 +1,9 @@
+// @ts-nocheck
 import { useState } from 'react';
 import { Container, Row, Col, Accordion, Alert } from 'react-bootstrap';
 import { DeploySmartContractForm } from '../components/forms/DeploySmartContractForm';
 import { NewProjectForm } from '../components/forms/NewProjectForm';
+import { UploadPinataForm } from '../components/forms/UploadPinataForm';
 
 export const Create = () => {
     const [alerts, setAlerts] = useState([]);
@@ -39,10 +41,7 @@ export const Create = () => {
                         <Accordion.Item eventKey="2">
                             <Accordion.Header>3. Upload Image/Metadata to Pinata</Accordion.Header>
                             <Accordion.Body>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat.
+                                <UploadPinataForm />
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="3">

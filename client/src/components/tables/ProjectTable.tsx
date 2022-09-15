@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Table } from 'react-bootstrap';
 
 export const ProjectTable = ({ projects }) => {
@@ -19,7 +20,7 @@ export const ProjectTable = ({ projects }) => {
             </thead>
             <tbody>
                 {projects.map((project) => (
-                    <tr>
+                    <tr key={project.id}>
                         <td>{project.id}</td>
                         <td>{project.name}</td>
                         <td>{project.collection_monthly_limit}</td>
