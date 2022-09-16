@@ -40,13 +40,11 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log('req.file', req.file);
 
     pinata.pinFileToIPFS(readableStreamForFile).then(async (result) => {
-        console.log(result);
+        res.json(result.IpfsHash)
         fs.unlinkSync(`./tmp/my-uploads/${req.file.filename}`, err => console.log(err));
     }).catch((err) => {
         console.log(err);
     });
-
-    res.json(req.file)
 });
 
 app.listen(PORT, () => {

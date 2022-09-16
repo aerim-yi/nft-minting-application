@@ -2,16 +2,16 @@ import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from "axios";
 
-export const UploadPinataForm = () => {
+export const UploadPinataForm = ({ setInfo }) => {
     const [imgFile, setImgFile] = useState();
 
-    const sendImgFile = async (e) => {
+    const sendImgFile = async () => {
         const data = new FormData();
         data.append('file', imgFile);
 
-        const response = await axios.post('http://localhost:3080/upload', data)
+        const response = await axios.post('http://localhost:3080/upload', data);
 
-        console.log('response.data', response.data)
+        setInfo({ key: "Image URL", value: `https://gateway.pinata.cloud/ipfs/${response.data}` })
         console.log("IMAGES_SUBMIT_SUCCESS");
     }
 
