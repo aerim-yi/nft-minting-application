@@ -1,6 +1,6 @@
-// @ts-nocheck
 import { useState } from 'react';
 import { Container, Row, Col, Accordion, Alert } from 'react-bootstrap';
+import { CreateMetadataForm } from '../components/forms/CreateMetadataForm';
 import { DeploySmartContractForm } from '../components/forms/DeploySmartContractForm';
 import { NewProjectForm } from '../components/forms/NewProjectForm';
 import { UploadPinataForm } from '../components/forms/UploadPinataForm';
@@ -41,7 +41,8 @@ export const Create = () => {
                         <Accordion.Item eventKey="2">
                             <Accordion.Header>3. Upload Image/Metadata to Pinata</Accordion.Header>
                             <Accordion.Body>
-                                <UploadPinataForm />
+                                <UploadPinataForm setInfo={setInfo} />
+                                <CreateMetadataForm />
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="3">
