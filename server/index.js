@@ -41,10 +41,15 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     pinata.pinFileToIPFS(readableStreamForFile).then(async (result) => {
         res.json(result.IpfsHash)
-        fs.unlinkSync(`./tmp/my-uploads/${req.file.filename}`, err => console.log(err));
+        fs.unlink(`./tmp/my-uploads/${req.file.filename}`, err => console.log(err));
     }).catch((err) => {
         console.log(err);
     });
+});
+
+app.post('/create-metadata', (req, res) => {
+    console.log('req.body', req.body);
+    res.json(req.body)
 });
 
 app.listen(PORT, () => {

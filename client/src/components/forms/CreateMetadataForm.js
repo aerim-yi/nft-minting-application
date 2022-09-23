@@ -11,17 +11,16 @@ export const CreateMetadataForm = () => {
     const [nftClass, setNftClass] = useState();
 
     const sendMetadata = async () => {
-        const data = new FormData();
-        data.append('nftName', nftName);
-        data.append('nftDescription', nftDescription);
-        data.append('nftImgUrl', nftImgUrl);
-        data.append('nftAttach', nftAttach);
-        data.append('nftCollectable', nftCollectable);
-        data.append('nftClass', nftClass);
-
-        console.log(nftName)
-        const response = await axios.post('http://localhost:3080/create-metadata', data);
-        console.log(response)
+        const metadata = {
+            nftName: nftName,
+            nftDescription: nftDescription,
+            nftImgUrl: nftImgUrl,
+            nftAttach: nftAttach,
+            nftCollectable: nftCollectable,
+            nftClass: nftClass
+        }
+        const response = await axios.post('http://localhost:3080/create-metadata', metadata);
+        console.log(response.data)
     }
     return (
         <Form>
