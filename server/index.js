@@ -50,6 +50,18 @@ app.post('/upload', upload.single('file'), (req, res) => {
 app.post('/create-metadata', (req, res) => {
     console.log('req.body', req.body);
     res.json(req.body)
+
+    // create the directory if it does not exist
+    if (!fs.existsSync("tempMetadataFolder")) {
+        fs.mkdir("tempMetadataFolder", (err) => {
+            if (err) return err;
+            const data = JSON.stringify(req.body, null, 2);
+            fs.writeFile("./tempMetadataFolder/1", data, (err) => {
+                if (err) return err;
+                console.log("Directory and File Saved ");
+            });
+        });
+    }
 });
 
 app.listen(PORT, () => {
